@@ -1,8 +1,14 @@
 public class Main {
     public static void main(String[] args) {
 
-    CustomList customList = new CustomList(new int[] { 4, 3, 6, 13, 6, 5, 2, 16});
-      customList.removeAllByIndex(16);
+    CustomList customList = new CustomList(new int[] { 4, 3, 6, 13, 25, 5, 16});
+//    customList.selection(true);
+ //   customList.bubbleSort();
+    customList.swap(2,6);
+// customList.reverse();
+//    customList.selection();
+//   customList.bubbleSort();
+ //     customList.removeAllByIndex(16);
  //   customList.removeAll2(6);
  //   customList.removeByIndex(3);
         System.out.println(customList);

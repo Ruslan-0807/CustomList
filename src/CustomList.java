@@ -191,12 +191,132 @@ public   class CustomList {
             pop();
         }
     }
-    public void removeAllByIndex(int index){
-        for (int  i = 0;  i < this.list.length ; i++) {
-            if(i == index){
+
+    public void removeAllByIndex(int index) {
+        for (int i = 0; i < this.list.length; i++) {
+            if (i == index) {
                 removeAll(index);
 
+            }
         }
+    }
+
+    // / реализовать метод reverse, который разворачивает массив this.list
+    // // реализовать метод reverse, который разворачивает массив this.list
+    //
+    //// создать метод reverse (ничего не получает и ничего не возвращает)
+    //// выводит в треминал числа из массива list (по отдельности)
+//добавить процесс замены элементов
+//    reverse():
+//
+//    Этот метод инвертирует порядок элементов в массиве.
+//    Используется цикл, который проходит половину массива.
+//    На каждой итерации значения элементов меняются местами, начиная с крайних и двигаясь к центру массива.
+    public void reverse() {
+        int i = 0;
+        while (i < this.list.length - 1 - i) {
+
+            int tmp = this.list[i];
+            this.list[i] = this.list[this.list.length - 1 - i];
+            this.list[this.list.length - 1 - i] = tmp;
+            i++;
+        }
+    }
+
+    //    bubbleSort():
+//
+//    Этот метод сортирует массив в порядке возрастания с использованием сортировки пузырьком.
+//    Имеется два вложенных цикла. Внешний цикл проходит по всем элементам массива.
+//    Внутренний цикл сравнивает текущий элемент с следующим и меняет их местами, если текущий элемент больше следующего.
+//    По мере прохождения внутреннего цикла наименьший элемент "всплывает" на свое место в конце массива.
+    public void bubbleSort() {
+        for (int i = 0; i < this.list.length; i++) {
+            for (int j = 0; j < this.list.length - 1 - i; j++) {
+                if (this.list[j] > this.list[j + 1]) {
+                    int tmp = this.list[j];
+                    this.list[j] = this.list[j + 1];
+                    this.list[j + 1] = tmp;
+                }
+            }
+            System.out.println(this);
+        }
+    }
+
+    //    selectionSort():
+//
+//    Этот метод сортирует массив в порядке убывания с использованием сортировки выбором.
+//    Имеется два вложенных цикла. Внешний цикл проходит по всем элементам массива.
+//    Внутренний цикл находит максимальный элемент в текущем подмассиве и запоминает его значение и индекс.
+//    После завершения внутреннего цикла меняется местами максимальный элемент с
+//    последним элементом текущего подмассива.
+//    Обратите внимание, что в методе selectionSort()
+//    также выводится информация о максимальном элементе и его индексе на каждой итерации внешнего цикла.
+//    Это, вероятно, используется для отладки или для демонстрации процесса сортировки.
+    //    написать двойной цикл, который выводит значения лесенкой
+    public void selection() {
+        for (int i = 0; i < this.list.length; i++) {
+            int max = this.list[0];
+            int maxIndex = 0;
+            for (int j = 0; j < list.length - i; j++) {
+                if (max < this.list[j]) {
+                    max = this.list[j];
+                    maxIndex = j;
+                    j++;
+                }
+            }
+            int lastIndex = this.list.length - i - 1;
+            int temp = this.list[lastIndex];
+            this.list[lastIndex] = this.list[maxIndex];
+            this.list[maxIndex] = temp;
+        }
+    }
+
+    public void swap(int num1, int num2) {
+        for (int i = 0; i < this.list.length; i++) {
+            int temp = this.list[num1];
+            this.list[num1] = this.list[num2];
+            this.list[num2] = temp;
+
+            System.out.println(this);
+
+        }
+    }
+}
+
+
+
+
+        //       return num1;
+
+
+//    public void bubbleSort(boolean desc) {
+//        bubbleSort(true);
+//
+//        System.out.println(desc);
+//    }
+//    public void selection (boolean desc){
+//        selection(false);
+//        System.out.println("hjk" + desc);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // доработать метод reverse таким образом, чтобы выводились
+// равноудаленные от центра массива значения
+
 
 //    public void removeAllByIndex(int index) {
 //        for (int i = 0; i < this.list.length; i++) {
@@ -204,9 +324,9 @@ public   class CustomList {
 ////                shiftByIndex(i);
 ////                pop();
 //         removeAll(this.list[i]);
-            }
-        }
-    }
+
+
+
 
 
 
@@ -221,19 +341,6 @@ public   class CustomList {
 //                if (i != index) {
 //                    newList[newIndex] = list[i];
 //                    newIndex++;
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //        int[] newList = new int[this.list.length - 1];
 //        int newIndex = 0;
@@ -261,25 +368,3 @@ public   class CustomList {
 
 
 
-//Добавить класс CustomStringList со следующим набором методов.
-//
-//    0. Добавить начальный набор методов и свойств
-//
-//Добавить конструктор, который получает массив из строк и присваивает его в свойство list.
-//    1. Метод check
-//
-//Данный метод получает в качестве аргумента строку и проверяет, находится ли эта строка в списке строк или нет.
-// Если да, метод возвращает true, в ином случае false.
-//    2. Метод check
-//
-//Данный метод получает в качестве аргумента массив из строк и проверяет, находятся ли строки из полученного списка в списке строк list. Если все находятся, метод возвращает true, в ином случае false.
-//    3. Метод longestWord
-//
-//Данный метод не получает аргументов и возвращает самое длинное слово из массива list.
-//    4. Метод add
-//
-//Данный метод получает в качестве аргумента строку и создает новый массив в list, который содержит все старые элементы и новый.
-//    5. Метод addIfNotExists
-//
-//Данный метод получает в качестве аргумента строку и если данной строки нет в list создает новый массив в list, который содержит все старые элементы и новый. В ином случае выводит в терминал сообщение "Строка <значение строки> в массиве уже есть"
-//Результат необходимо загрузить на github и ссылку прислать в качестве результата.

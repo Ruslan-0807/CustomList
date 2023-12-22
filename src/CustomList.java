@@ -1,7 +1,7 @@
 import  java.util.Arrays;
 
 public   class CustomList {
-    private int[] list;
+    public int[] list;
 
     // Создать конструктор, получает в качестве аргумента массив из целых чисел и присваевает его в массив list
 //   Этот конструктор принимает массив целых чисел и инициализирует поле list этим массивом.
@@ -125,7 +125,6 @@ public   class CustomList {
 //            this.list[i] = this.list[i + 1];
 //        }
 //    }
-
     // доработать метод remove таким образом, чтобы в цикле определялся индекс
 // удаляемого элемента и все последующие элементы массива сдвигает на один шаг в лево
     public void shiftByIndex(int index) {
@@ -133,7 +132,6 @@ public   class CustomList {
             this.list[i] = this.list[i + 1];
         }
     }
-
     public void remove(int value) {
         for (int i = 0; i < this.list.length; i++) {
             if (this.list[i] == value) {
@@ -143,7 +141,6 @@ public   class CustomList {
             }
         }
     }
-
     public void remove2(int value) {
         int index = IndexOf(value);
         if (index != -1) {
@@ -151,7 +148,6 @@ public   class CustomList {
             pop();
         }
     }
-
     // создать метод removeRight, который удаляет первое вхождени с права на лево
     public void removeRight(int value) {
         for (int i = this.list.length - 1; i >= 0; i--) {
@@ -162,7 +158,6 @@ public   class CustomList {
             }
         }
     }
-
     // создать метод removeAll, который удаляет все вхождения указанного элемента
     public void removeAll(int value) {
         for (int i = 0; i < this.list.length; i++) {
@@ -172,7 +167,6 @@ public   class CustomList {
             }
         }
     }
-
     public void removeAll2(int value) {
         int i = 0;
         while (i < this.list.length) {
@@ -184,7 +178,6 @@ public   class CustomList {
             }
         }
     }
-
     public void removeByIndex(int index) {
         if (index >= 0 && index < this.list.length) {
             shiftByIndex(index);
@@ -222,7 +215,6 @@ public   class CustomList {
             i++;
         }
     }
-
     //    bubbleSort():
 //
 //    Этот метод сортирует массив в порядке возрастания с использованием сортировки пузырьком.
@@ -241,7 +233,6 @@ public   class CustomList {
             System.out.println(this);
         }
     }
-
     //    selectionSort():
 //
 //    Этот метод сортирует массив в порядке убывания с использованием сортировки выбором.
@@ -261,24 +252,97 @@ public   class CustomList {
                 if (max < this.list[j]) {
                     max = this.list[j];
                     maxIndex = j;
-                    j++;
                 }
             }
-            int lastIndex = this.list.length - i - 1;
-            int temp = this.list[lastIndex];
-            this.list[lastIndex] = this.list[maxIndex];
-            this.list[maxIndex] = temp;
+            swap(maxIndex, this.list.length - i - 1);
+//            int lastIndex = this.list.length - i
+//            int temp = this.list[lastIndex];
+//            this.list[lastIndex] = this.list[maxIndex];
+//            this.list[maxIndex] = temp;
         }
     }
-
     public void swap(int num1, int num2) {
         for (int i = 0; i < this.list.length; i++) {
             int temp = this.list[num1];
             this.list[num1] = this.list[num2];
             this.list[num2] = temp;
+            //           System.out.println(this);
+        }
+    }
+    public void bubbleSort(boolean desc) {
+        for (int i = 0; i < this.list.length; i++) {
+            for (int j = 0; j < this.list.length - 1 - i; j++) {
+                if (this.list[j] > this.list[j + 1] == desc) {
+                    swap(j, j + 1);
+                }
+            }
+        }
+    }
+    public void selectionSort(boolean desc) {
+        for (int i = 0; i < this.list.length; i++) {
+            int target = this.list[0];
+            int targetIndex = 0;
+            for (int j = 0; j < list.length - i; j++) {
+                if (target < this.list[j] == desc) {
+                    target = this.list[j];
+                    targetIndex = j;
+                }
+            }
+            swap(targetIndex, this.list.length - i - 1);
+        }
+    }
+    // создать метод invert, который проходится по всем элементам
+    // массива и меняет у них знак ( -5 -> 5, 5 -> -5)
+    public void invert() {
+        for (int i = 0; i < this.list.length; i++) {
+            this.list[i] *= -1;
+        }
+    }
 
-            System.out.println(this);
+    // создать метод positive который превращает все элементы в положительные
+    // использовать Math нельзя
+    public void positive() {
+        for (int i = 0; i < this.list.length; i++) {
+            if (this.list[i] < 0) ;
+            this.list[i] *= -1;
+        }
+    }
+    // создать метод invert, который проходится по всем элементам
+    // массива и меняет у них знак ( -5 -> 5, 5 -> -5)
+    // создать метод changeSign который получает булевый аргумент
+    // если true, то все числа делаем положительными
+    // в ином случае отрицательными
+    public void changeSign(boolean type) {
+        for (int i = 0; i < this.list.length; i++) {
+            if (this.list[i] < 0 == true) {
+                this.list[i] *= -1;
+            }
+        }
+    }
+    // создать метод insertionSort который используя цикл по индексам выводит все значения массива в терминал
+    // написать алгоритм который для каждого числа из массива выводит значение меньше этого числа которое ближе всего к нему с лева
+// если такого числа нет вывести отбивку "такого числа
+    public void insertionSort() {
+        for (int i = 0; i < this.list.length; i++) {
+            for (int j = i - 1; j >= 0; j--) {
+                if (this.list[j] < this.list[i]) {
 
+                }
+                System.out.printf("%d - %d%n", this.list[i], this.list[j]);
+                break;
+            }
+        }
+    }
+    public void insertionSort1() {
+        for (int i = 1; i < this.list.length; i++) {
+            int key = this.list[i];
+            int j = i-1;
+            while (j >= 0 && this.list[j] > key ){
+                this.list[j+1] = this.list[j];
+                j--;
+            }
+            this.list[j+1] = key;
+            System.out.printf("[%d)%d] %s%n" ,i , key,this);
         }
     }
 }
@@ -286,31 +350,21 @@ public   class CustomList {
 
 
 
+
+
+
+
+
+
         //       return num1;
 
 
-//    public void bubbleSort(boolean desc) {
-//        bubbleSort(true);
 //
 //        System.out.println(desc);
 //    }
 //    public void selection (boolean desc){
 //        selection(false);
 //        System.out.println("hjk" + desc);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -324,10 +378,6 @@ public   class CustomList {
 ////                shiftByIndex(i);
 ////                pop();
 //         removeAll(this.list[i]);
-
-
-
-
 
 
 //    public void  removeByIndex(int index) {
